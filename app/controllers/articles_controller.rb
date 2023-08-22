@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+
   def index
     @articles = Article.all
   end
@@ -9,14 +10,15 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+  end 
 
   def create
-      @article = Article.new(title:"...", body:"...")
+    @article = Article.new(title:"...", body:"...")
 
-      if @article.save()
-        redirect_to @article
-      else
-        render :new, status: unprocessable entity
-      end
-    end 
+    if @article.save()
+      redirect_to @article
+    else
+      render :new, status: :unprocessable_entity
+    end    
+  end
 end
